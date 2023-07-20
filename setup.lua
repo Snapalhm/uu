@@ -1,6 +1,6 @@
 #!/usr/bin/env lua5.3
-os.execute('sudo rm -rf /usr/lib/x86_64-linux-gnu/lua/5.3/tdbot.so')
-os.execute('sudo rm -rf /usr/local/share/lua/5.3/tdbot.lua')
+os.execute('sudo rm -rf /usr/lib/x86_64-linux-gnu/lua/5.3/tdlua.so')
+os.execute('sudo rm -rf /usr/local/share/lua/5.3/luatele.lua')
 local so_path_file = {'/usr','lib','x86_64-linux-gnu','lua','5.3','tdlua.so'}
 local tdbot_client_path = {'/usr','local','share','lua','5.3','luatele.lua'}
 function exists(file_path)
@@ -24,12 +24,12 @@ os.execute('sudo mkdir '..path)
 end
 end
 end
-if os.execute('unzip tdbot.zip') then
+if os.execute('unzip tdlua.zip') then
 rem_and_create_dir(so_path_file)
-os.execute('sudo mv tdbot.so ' .. table.concat(so_path_file, '/'))
+os.execute('sudo mv tdlua.so ' .. table.concat(so_path_file, '/'))
 rem_and_create_dir(tdbot_client_path)
 os.execute('sudo mv tdbot.lua ' .. table.concat(tdbot_client_path, '/'))
-os.execute('sudo rm -rf tdbot.zip')
+os.execute('sudo rm -rf tdlua.zip')
 if exists(table.concat(so_path_file, '/')) and exists(table.concat(tdbot_client_path, '/')) then
 os.execute('sudo lua5.3 start.lua')
 end
